@@ -1,0 +1,39 @@
+<h1>New Contact form</h1>
+<%= form_for(@contact) do |f|%>
+<div>
+  <h3>contact for: <%=f.collection_select :user_id, User.all, :id, :name%></h3>
+</div>
+<div>
+  <p>
+  <%=f.label :name%>
+  <%=f.text_field :name%>
+  </p>
+    
+  <p>
+  <%=f.label :address%>
+  <%=f.text_field :address%>
+  </p>
+   <p>
+  <%=f.label :phone_number%>
+  <%=f.text_field :phone_number%>
+   </p>
+
+</div>
+<h3>List All Pets</h3>
+    <%=f.fields_for :pets do |ff|%>
+        <div>
+        	<%=ff.label :name%>
+          <%=ff.text_field :name%>
+            <br>
+              <%=ff.label :breed%>
+              <%=ff.text_field :breed, list: "breeds_autocomplete"%>
+              <datalist id="breeds_autocomplete">
+                  <% Pet.all.each do |pet|%>
+                   <option value="<%=pet.breed%>">
+                 <%end%> 
+              </datalist>
+              </div>
+            </br>
+            <%end%>
+     <%=f.submit%>
+   <%end%>

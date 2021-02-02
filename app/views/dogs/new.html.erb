@@ -1,0 +1,28 @@
+<h1>Create a new Dog:</h1>
+<%= form_for(@dog) do |f|%>
+  <div>
+    <%= f.label :name%>
+    <%= f.text_field :name%>
+  </div><br>
+	
+  <div>
+    <%= f.label :breed%>
+    <%= f.text_field :breed%>
+  </div><br>
+	
+  <div>
+    <%= f.label :age%>
+    <%= f.text_field :age%>
+  </div><br>
+	
+  <div>
+    <h3>create a new owner:</h3>
+    <%= f.fields_for :owner, Owner.new do |owner_attributes|%>
+        <%= owner_attributes.label :name, "Owner Name:" %>
+        <%= owner_attributes.text_field :name %>
+    <% end %>
+  </div>
+	
+  <%= f.submit %>
+	
+<% end %>
