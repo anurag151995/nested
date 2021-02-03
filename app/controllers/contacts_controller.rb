@@ -1,15 +1,21 @@
 class ContactsController < ApplicationController
 	def new
 	  @contact = Contact.new
-	  3.times{@contact.pets.build} 
+	  #3.times{@contact.pets.build}
 	end
 	def create
-     @contact = Contact.new(contact_params(:name, :address, :phone, :email))
+        #debugger
+     @contact = Contact.new(contact_params)
      @contact.save
-     redirect_to contact_path(@contact)
+     redirect_to contacts_path
     end
+
+    def index
+        @pets = Pet.all
+    end
+
     private
     def contact_params
-    	params.require(:contact).permit(:name, :address, :user_id, :phone, :email, pets_attributes:[:name, :breed])
+    	params.require(:contact).permit(:name, :address,:user_id,:phone_number,pets_attributes:[:id,:name,:breed])
     end
 end

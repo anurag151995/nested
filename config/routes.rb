@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 	root 'contacts#new'
 	resources :dogs
 	resources :owners
+	#root 'dogs#new'
 end
