@@ -22,7 +22,7 @@
 <h3>List All Pets</h3>
     <div>
     <h3>create a new pet:</h3>
-    <%= f.fields_for :pets_attributes, Pet.new do |pets_attributes|%>
+    <%= f.fields_for :pets, Pet.new do |pets_attributes|%>
         <%= pets_attributes.label :name, "Pet Name:" %>
         <%= pets_attributes.text_field :name %>
         <p>
