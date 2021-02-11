@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_04_105652) do
+ActiveRecord::Schema.define(version: 2021_02_05_051819) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.string "name"
@@ -31,8 +37,9 @@ ActiveRecord::Schema.define(version: 2021_02_04_105652) do
     t.string "owner_id"
   end
 
-  create_table "mangers", force: :cascade do |t|
-    t.string "name"
+  create_table "likes", force: :cascade do |t|
+    t.string "product_id"
+    t.string "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -43,16 +50,17 @@ ActiveRecord::Schema.define(version: 2021_02_04_105652) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "people", force: :cascade do |t|
+  create_table "pets", force: :cascade do |t|
     t.string "name"
-    t.string "manager_id"
+    t.string "breed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "pets", force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
     t.string "name"
-    t.string "breed"
+    t.string "quantity"
+    t.string "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
